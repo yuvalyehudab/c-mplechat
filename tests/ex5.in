@@ -1,0 +1,7 @@
+User: peleg
+Password: ~bi
+list_of_courses
+add_course 2 "lot of knowledge 2 peleg"
+list_of_courses
+get_rate 2222
+quit

@@ -1,0 +1,6 @@
+User: yuv
+Password: hi
+add_course 1 "lot of knowledge 1"
+list_of_courses
+get_rate 2222
+quit

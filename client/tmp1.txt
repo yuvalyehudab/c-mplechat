@@ -1,0 +1,68 @@
+#ifndef SEND_COMMAND_TO_SERVER_H
+#define SEND_COMMAND_TO_SERVER_H
+
+int send_command_to_server(int socket, char *buffer, int buffer_size);
+
+#endif
+        command_name = fgets(command, MESSAGE_LENGTH, stdin);
+		/*not fgets! put it inside load function that moves things on the same buffer
+		work on the array that the command came on
+		send it as a packet
+		with code at beginning*/
+		command_name = strtok(command, delimiter);
+		if (command_name == NULL){
+			printf("Illegal command.\n");
+			continue;
+		}
+		if (strcmp("list_of_courses", command_name) == 0) {
+			list_of_courses(socket); // client_parser
+			wait_for_answer = 2;
+			continue;
+		}
+		if (strcmp("add_course", command_name) == 0) {
+			param1 = strtok(NULL, delimiter);
+			param2 = strtok(NULL, "\"");
+			if (param1 == NULL || param2 == NULL || param1[0] == 0 || param2[0] == 0){
+				printf("Illegal command.\n");
+				continue;
+			}
+			add_course(socket, param1, param2); // client_parser
+			wait_for_answer = 1;
+			continue;
+		}
+		if (strcmp("rate_course", command_name) == 0) {
+			param1 = strtok(NULL, delimiter);
+			param2 = strtok(NULL, delimiter);
+			param3 = strtok(NULL, "\"");
+			if (param1 == NULL || param2 == NULL || param3 == NULL || param1[0] == 0 || param2[0] == 0 || param3[0] == 0){
+				printf("Illegal command.\n");
+				continue;
+			}
+			rate_course(socket, param1, param2, param3); //client_parser
+			continue;
+		}
+		if (strcmp("get_rate", command_name) == 0) {
+			param1 = strtok(NULL, delimiter);
+			if (param1 == NULL || param1[0] == 0){
+				printf("Illegal command.\n");
+				continue;
+			}
+			get_rate(socket, param1); // client_parser
+			wait_for_answer = 2;
+			continue;
+		}
+		if (strcmp("broadcast", command_name) == 0) {
+			param1 = strtok(NULL, "\"");
+			if (param1 == NULL || param1[0] == 0){
+				printf("Illegal command.\n");
+				continue;
+			}
+			broadcast(socket, param1); // client_parser
+			continue;
+		}
+		if (strcmp("quit", command_name) == 0) {
+			quit(socket); // client_parser
+			break;
+		}
+		else
+			printf("Illegal command.\n");
