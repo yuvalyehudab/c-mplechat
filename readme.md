@@ -103,6 +103,6 @@ You can try it yourself (you need to fix the paths) with
 ./seker_server ../users.txt ./ &
 ./seker_client < ex1.in > ex1.out
 ```
-The project was not tested with valgring.
+The project was not tested with valgrind. Yet.
 
 gif/animation of usage might be added later on
