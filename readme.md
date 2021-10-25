@@ -1,4 +1,4 @@
-# C-mple Chat - A simple immediate messaging server and client using c
+# C-mple Chat - A simple IM server and client in c
 
 
 ## compilation instruction,tests, usage and xplanation, gif/animation of usage
